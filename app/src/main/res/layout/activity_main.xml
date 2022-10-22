@@ -7,79 +7,106 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        tools:context=".MainActivity">
+        android:fillViewport="true">
 
-        <EditText
-            android:id="@+id/mainOriginalEdittext"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/custom_edittext"
-            android:digits="TACG"
-            android:gravity="top"
-            android:hint="번역할 내용을 입력하세요."
-            android:inputType="textCapCharacters"
-            android:minHeight="100dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundcolor"
+            tools:context=".MainActivity">
 
-        <Button
-            android:id="@+id/mainTranscriptionButton"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:text="전사"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainOriginalEdittext" />
+            <Button
+                android:id="@+id/mainInitButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_margin="12dp"
+                android:backgroundTint="@color/buttoncolor"
+                android:fontFamily="@font/suitbold"
+                android:text="초기화"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/mainOriginalEdittext"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/mainTranscriptionTextview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/custom_edittext"
-            android:minHeight="100dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mainTranscriptionButton" />
+            <EditText
+                android:id="@+id/mainOriginalEdittext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/custom_edittext"
+                android:digits="TACG"
+                android:gravity="top"
+                android:hint="번역할 내용을 입력하세요."
+                android:inputType="textCapCharacters"
+                android:minHeight="100dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mainInitButton" />
 
-        <Button
-            android:id="@+id/mainTranslateButton"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:text="번역"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mainTranscriptionTextview" />
+            <Button
+                android:id="@+id/mainTranscriptionButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/buttoncolor"
+                android:text="전사"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mainOriginalEdittext" />
 
-        <TextView
-            android:id="@+id/mainTranslateTextview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/custom_edittext"
-            android:minHeight="100dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mainTranslateButton" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+
+                android:id="@+id/mainTranscriptionTextview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/custom_edittext"
+                android:minHeight="100dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mainTranscriptionButton" />
+
+            <Button
+                android:id="@+id/mainTranslateButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/buttoncolor"
+                android:fontFamily="@font/suitbold"
+                android:text="번역"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mainTranscriptionTextview" />
+
+            <TextView
+                android:id="@+id/mainTranslateTextview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/custom_edittext"
+                android:minHeight="100dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mainTranslateButton" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
