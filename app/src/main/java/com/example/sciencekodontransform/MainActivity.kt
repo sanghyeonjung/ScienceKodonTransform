@@ -26,46 +26,50 @@ class MainActivity : AppCompatActivity() {
                 binding.mainTranscriptionTextview.text = ""
             }
 
-            if (str.length % 3 == 0) {
-                for (i in 0..(str.length - 1)) {
-                    var c: String = ""
-                    if (str[i] == 'T') {
-                        c = "A"
-                    } else if (str[i] == 'A') {
-                        c = "U"
-                    } else if (str[i] == 'G') {
-                        c = "C"
-                    } else if (str[i] == 'C') {
-                        c = "G"
-                    }
-                    binding.mainTranscriptionTextview.text =
-                        StringBuilder(binding.mainTranscriptionTextview.text.toString()).append(c)
-                            .toString()
-                }
-            } else {
+            if(str.length % 3 != 0){
                 Toast.makeText(this@MainActivity, "입력문의 길이가 3으로 나눠떨어지지 않습니다.", Toast.LENGTH_SHORT)
                     .show()
+                return@setOnClickListener
             }
+
+            val result = StringBuilder("")
+            for (i in 0 until str.length) {
+                val c: String = if (str[i] == 'T') {
+                    "A"
+                } else if (str[i] == 'A') {
+                    "U"
+                } else if (str[i] == 'G') {
+                    "C"
+                } else {
+                    "G"
+                } // when 문으로도 대체
+
+                result.append(c)
+            }
+            binding.mainTranscriptionTextview.text = result
         }
+
         binding.mainTranslateButton.setOnClickListener {
             val str: String = binding.mainTranscriptionTextview.text.toString();
-            var resultstr: String = ""
             if (str.isBlank()) {
                 Toast.makeText(this, "전사를 먼저 해주세요", Toast.LENGTH_SHORT).show()
-            } else {
-                val aminoacidLength: Int = str.length / 3;
-                Log.e("len", aminoacidLength.toString())
-                for (i in 0 until aminoacidLength) {
-                    var kodon: String = "";
-                    for (j in i * 3 until i * 3 + 3) {
-                        kodon += str[j]
-                    }
-                    Log.e("kodon ", kodon)
-                    Log.e("aminoacid ", kodon_hashMap[kodon].toString())
-                    resultstr += kodon + " : " + kodon_hashMap[kodon].toString() + "\n"
-                }
-                binding.mainTranslateTextview.text = resultstr
+                return@setOnClickListener
             }
+
+            val resultstr = StringBuilder("")
+            val aminoacidLength: Int = str.length / 3;
+            Log.e("len", aminoacidLength.toString())
+            for (i in 0 until aminoacidLength) {
+                val kodon = StringBuilder("");
+                for (j in i * 3 until i * 3 + 3) {
+                    kodon.append(str[j])
+                }
+                Log.e("kodon ", kodon.toString())
+                Log.e("aminoacid ", kodon_hashMap[kodon.toString()].toString())
+                resultstr.appendLine("$kodon : ${kodon_hashMap[kodon.toString()]}")
+            }
+
+            binding.mainTranslateTextview.text = resultstr
         }
 
         binding.mainInitButton.setOnClickListener {
